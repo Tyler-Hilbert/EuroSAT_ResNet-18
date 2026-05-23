@@ -3,16 +3,9 @@ A vibe-coded ResNet-18 model ≈98% accuracy on EuroSAT.
 
 # Usage
 ## Installation
-```
-python -m pip install datasets
-python -m pip install pillow
-python -m pip install matplotlib
-python -m pip install numpy
-python -m pip install torch
-python -m pip install torchvision
-```  
+`pip install datasets, pillow, matplotlib, numpy, torch, torchvision`  
 
-## Preview data
+## Preview Data (optional)
 `python preview_dataset.py`  
 
 ## Train
