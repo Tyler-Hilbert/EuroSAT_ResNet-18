@@ -1,8 +1,8 @@
-# Vibe-coded by Gemini
 # Trains a CNN for euro_sat
 # References:
 #   https://docs.pytorch.org/tutorials/beginner/blitz/cifar10_tutorial.html
 #   https://huggingface.co/docs/datasets/quickstart#vision
+# AI Note: Vibe-coded by Gemini
 
 import torch
 from torch.utils.data import DataLoader
@@ -56,7 +56,8 @@ def main():
     device = torch.accelerator.current_accelerator().type if torch.accelerator.is_available() else "cpu"
     print(f"Using {device} device\n")
 
-    print('Loading Dataset.')
+    print ('Loading Dataset.')
+    print ("  (Note: EuroSAT doesn't have default test/train split.)")
     dataset = load_dataset("nielsr/eurosat-demo")['train']
     dataset = dataset.train_test_split(test_size=0.2, seed=42)
     train_dataset = dataset['train'].with_transform(apply_train_transforms)

@@ -1,4 +1,11 @@
-# Vibe coded with Gemini
+# I wrote this script prior to training as a way to familiarize myself with the EuroSAT dataset.
+# The script does the following:
+#   Displays a random image from each of the 10 classes
+#   Prints the count of each class
+#   Prints the following information for each image: shape, dtype, min, max, mean, label_id, label_name
+#   Verifies all images have the same shape
+#   Verifies all images have the same dtype
+# AI Note: Vibe coded with Gemini
 
 from datasets import load_dataset
 import numpy as np
@@ -15,6 +22,7 @@ def main():
 # Loads the dataset from HuggingFace
 def load_satellite_dataset(shuffle):
     print ('Loading dataset.')
+    print ("  (Note: EuroSAT doesn't have default test/train split.)")
     ds = load_dataset("nielsr/eurosat-demo", split="train")
 
     if shuffle:
