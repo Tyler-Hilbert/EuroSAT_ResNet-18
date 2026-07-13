@@ -15,7 +15,7 @@ import torch.optim.lr_scheduler as lr_scheduler
 from datasets import load_dataset
 
 train_transform = transforms.Compose([
-    transforms.Resize((64, 64)), 
+    transforms.Resize((224, 224), interpolation=transforms.InterpolationMode.BICUBIC),
     transforms.RandomHorizontalFlip(), 
     transforms.RandomVerticalFlip(),
     transforms.ColorJitter(brightness=0.2, contrast=0.2), 
@@ -24,7 +24,7 @@ train_transform = transforms.Compose([
 ])
 
 test_transform = transforms.Compose([
-    transforms.Resize((64, 64)),
+    transforms.Resize((224, 224), interpolation=transforms.InterpolationMode.BICUBIC),
     transforms.ToTensor(),
     transforms.Normalize((0.485, 0.456, 0.406), (0.229, 0.224, 0.225))
 ])
