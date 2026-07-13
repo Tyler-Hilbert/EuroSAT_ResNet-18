@@ -8,25 +8,25 @@ import torch
 from torch.utils.data import DataLoader
 import torch.nn as nn
 import torch.optim as optim
-import torchvision.transforms as transforms
+from torchvision.transforms import v2, InterpolationMode
 import torchvision.models as models
 import torch.optim.lr_scheduler as lr_scheduler
 
 from datasets import load_dataset
 
-train_transform = transforms.Compose([
-    transforms.Resize((224, 224), interpolation=transforms.InterpolationMode.BICUBIC),
-    transforms.RandomHorizontalFlip(), 
-    transforms.RandomVerticalFlip(),
-    transforms.ColorJitter(brightness=0.2, contrast=0.2), 
-    transforms.ToTensor(),
-    transforms.Normalize((0.485, 0.456, 0.406), (0.229, 0.224, 0.225)) 
+train_transform = v2.Compose([
+    v2.Resize((224, 224), interpolation=InterpolationMode.BICUBIC),
+    v2.RandomHorizontalFlip(),
+    v2.RandomVerticalFlip(),
+    v2.ColorJitter(brightness=0.2, contrast=0.2),
+    v2.Compose([v2.ToImage(), v2.ToDtype(torch.float32, scale=True)]),
+    v2.Normalize(mean=[0.485, 0.456, 0.406], std=[0.229, 0.224, 0.225])
 ])
 
-test_transform = transforms.Compose([
-    transforms.Resize((224, 224), interpolation=transforms.InterpolationMode.BICUBIC),
-    transforms.ToTensor(),
-    transforms.Normalize((0.485, 0.456, 0.406), (0.229, 0.224, 0.225))
+test_transform = v2.Compose([
+    v2.Resize((224, 224), interpolation=InterpolationMode.BICUBIC),
+    v2.Compose([v2.ToImage(), v2.ToDtype(torch.float32, scale=True)]),
+    v2.Normalize(mean=[0.485, 0.456, 0.406], std=[0.229, 0.224, 0.225])
 ])
 
 def apply_train_transforms(examples):
