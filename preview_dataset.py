@@ -5,7 +5,7 @@
 #   Prints the following information for each image: shape, dtype, min, max, mean, label_id, label_name
 #   Verifies all images have the same shape
 #   Verifies all images have the same dtype
-# AI Note: Vibe coded with Gemini
+# AI Note: Some code was generated with Gemini
 
 from datasets import load_dataset
 import numpy as np

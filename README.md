@@ -1,5 +1,5 @@
 # EuroSAT ResNet-18
-A vibe-coded ResNet-18 model ≈98% accuracy on EuroSAT.  
+Training ResNet-18 with ≈98% accuracy on EuroSAT.  
 
 # Usage
 ## Installation
